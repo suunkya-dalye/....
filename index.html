@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>A Small Message</title>
+
+<style>
+
+body{
+margin:0;
+min-height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+font-family:Georgia, serif;
+color:white;
+overflow:hidden;
+
+/* Mostly BLACK universe with slight purple glow */
+background:
+radial-gradient(circle at 25% 30%, rgba(120,0,200,0.15), transparent 40%),
+radial-gradient(circle at 80% 70%, rgba(160,0,255,0.12), transparent 45%),
+linear-gradient(#000000,#020003 80%);
+}
+
+/* Stars */
+
+.star{
+position:absolute;
+width:2px;
+height:2px;
+background:white;
+border-radius:50%;
+animation:twinkle 3s infinite alternate;
+}
+
+@keyframes twinkle{
+from{opacity:0.2;}
+to{opacity:1;}
+}
+
+/* Shooting star */
+
+.shooting{
+position:absolute;
+width:3px;
+height:3px;
+background:white;
+border-radius:50%;
+box-shadow:0 0 6px white;
+animation:shoot 6s linear infinite;
+}
+
+@keyframes shoot{
+0%{
+transform:translate(-200px,-200px);
+opacity:0;
+}
+10%{opacity:1;}
+100%{
+transform:translate(1200px,600px);
+opacity:0;
+}
+}
+
+/* Card */
+
+.card{
+position:relative;
+width:70%;
+max-width:700px;
+padding:40px;
+border-radius:15px;
+
+background:rgba(0,0,0,0.7);
+backdrop-filter:blur(6px);
+
+text-align:center;
+
+/* Soft purple glow */
+box-shadow:0 0 25px rgba(140,0,255,0.25);
+
+max-height:85vh;
+overflow-y:auto;
+z-index:2;
+}
+
+/* Button */
+
+button{
+padding:12px 25px;
+font-size:18px;
+border:none;
+border-radius:8px;
+background:#5c2a9d66;
+color:white;
+cursor:pointer;
+}
+
+button:hover{
+background:#7a3cff88;
+}
+
+#poem{
+display:none;
+white-space:pre-line;
+line-height:1.9;
+font-size:18px;
+}
+
+/* Footer */
+
+.footer{
+margin-top:25px;
+font-style:italic;
+opacity:0.85;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- Shooting star -->
+<div class="shooting"></div>
+
+<!-- Create stars -->
+<script>
+
+for(let i=0;i<120;i++){
+
+let star=document.createElement("div");
+star.className="star";
+
+star.style.top=Math.random()*100+"vh";
+star.style.left=Math.random()*100+"vw";
+
+star.style.animationDuration=(2+Math.random()*4)+"s";
+
+document.body.appendChild(star);
+
+}
+
+</script>
+
+<audio id="music" autoplay loop>
+<source src="song.mp3" type="audio/mpeg">
+</audio>
+
+<div class="card">
+
+<button onclick="showPoem()">Click to Read My Message</button>
+
+<div id="poem">
+
+Aaj tumne kaha, “baat karna accha nahi lag raha…”
+Aur sach kahun, us pal thoda sa chup ho gaya main.
+
+Yaad aaya woh waqt jab choti choti baaton par
+tumhari hasi phone ke is side tak aa jaati thi.
+Kabhi ek simple “hmm” bhi itna khaas lagta tha,
+jaise din ki thakan wahi khatam ho jaati ho.
+
+Kabhi sochta hoon…
+kya woh pal sirf meri yaadon mein reh gaye hain?
+Ya tumhe bhi kabhi achanak woh baatein yaad aati hain—
+late night messages, bina wajah ki hasi,
+aur woh chhoti si baat jo hum dono ko khush kar deti thi.
+
+Main apne dil ki baatein tumse isliye share karta tha,
+kyunki mujhe lagta tha tum samjhogi, judge nahi karogi.
+Par shayad meri baat kehne ka tareeqa hi galat tha…
+agar usse tumhe takleef hui ho, toh dil se sorry.
+
+Main shikayat nahi kar raha…
+bas samajhna chahta hoon.
+Kya meri baatein sach mein itni badal gayi hain,
+ya tumhare dil mein unke liye jagah thodi si kam ho gayi hai?
+
+Kyuki sach bataun,
+kuch log aadat ban jaate hain zindagi ki…
+aur jab woh khamosh ho jaate hain,
+toh sirf baatein hi nahi,
+bahut si achchi yaadein bhi chup si ho jaati hain.
+
+<div class="footer">
+“Some words are easier to write than to say.”  
+</div>
+
+</div>
+</div>
+
+<script>
+
+function showPoem(){
+document.querySelector("button").style.display="none";
+document.getElementById("poem").style.display="block";
+}
+
+</script>
+
+</body>
+</html>
